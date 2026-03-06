@@ -222,7 +222,7 @@ s_{n+1} = s_n + (h/6)·(f1 + 2·f2 + 2·f3 + f4)     (8)
 One-step integration error at $t = 0.1$ s (reference: RK4 with $h = 10^{-5}$ s):
 
 | Step Size $h$ | Forward Euler Error | RK4 Error |
-|:-------------:|:-------------------:|:---------:|
+|:--------------|---------------------|-----------|
 | 0.100 s | 0.027239 | 5.07 × 10⁻⁵ |
 | 0.050 s | 0.015894 | 3.10 × 10⁻⁶ |
 | 0.025 s | 0.008625 | 1.90 × 10⁻⁷ |
@@ -244,7 +244,7 @@ Three scripts perform this analysis by sweeping over a range of step sizes $h$ a
 **Forward Euler stability sweep** (primary variant):
 
 | Step Size $h$ | $|\lambda|_{\max}$ | Status |
-|:-------------:|:-----------------:|:------:|
+|:--------------|--------------------|--------|
 | 0.001 s | < 1.0 | ✅ Stable |
 | 0.006 s | ≈ 1.0 | ⚠️ Critical boundary |
 | 0.010 s | 1.000237 | ❌ Unstable |
@@ -536,7 +536,7 @@ In `Comparison.py` and `Result.py`, the three integrators share one `mass_spring
 ### Individual Method Results — $t_f = 10$ s, $h = 0.01$ s
 
 | Method | Max $|x|$ (m) | Final $x$ (m) | Final $\dot{x}$ (m/s) | Behaviour |
-|--------|:------------:|:-------------:|:--------------------:|-----------|
+|--------|---------------|---------------|-----------------------|-----------|
 | Forward Euler | 0.5761 | −0.0969 | −1.9046 | Slowly diverging — amplitude grows over time |
 | Backward Euler | 0.4600 | −0.0283 | −0.6367 | Stable — decays faster than physical rate |
 | RK4 | 0.4600 | −0.0565 | −1.0986 | Stable — accurate physical damping reproduction |
@@ -544,7 +544,7 @@ In `Comparison.py` and `Result.py`, the three integrators share one `mass_spring
 ### Comparative Metrics — $t_f = 30$ s, $h = 0.01$ s
 
 | Method | Max Amplitude (m) | Final State Error vs. Backward Euler |
-|--------|:-----------------:|:------------------------------------:|
+|--------|-------------------|--------------------------------------|
 | Backward Euler | 0.4600 | — (reference baseline) |
 | Forward Euler | 0.9239 | 2.6219 |
 | RK4 | 0.4600 | 0.4183 |
@@ -558,7 +558,7 @@ In `Comparison.py` and `Result.py`, the three integrators share one `mass_spring
 ### Stability Analysis Summary
 
 | Method | Stability Type | Instability Onset | $|\lambda|_{\max}$ at $h=0.01$ s |
-|--------|:--------------:|:-----------------:|:--------------------------------:|
+|--------|----------------|-------------------|----------------------------------|
 | Forward Euler | Conditionally stable | $h \approx 0.006$ s | 1.000237 ❌ |
 | Backward Euler (iterative) | A-stable — unconditional | Never | < 1.0 ✅ |
 | RK4 | Conditionally stable | $h \gg 0.01$ s | ≈ 1.0 ✅ |
@@ -624,8 +624,7 @@ pip install numpy matplotlib
 
 **Umer Ahmed Baig Mughal** <br>
 Master's in Robotics and Artificial Intelligence <br>
-*Specialization: Computer Vision · Robot Modeling and Control · Perception · Autonomous Systems* <br>
-ITMO University, Saint Petersburg · Group R4137c · ITMO ID: 472268
+*Specialization:  Machine Learning · Computer Vision · Human-Robot Interaction · Autonomous Systems · Robotic Motion Control*
 
 ---
 
@@ -635,4 +634,4 @@ This project is intended for **academic and research use**. It was developed as 
 
 ---
 
-*Lab 1 — Simulation of Robotic Systems | ITMO University, Saint Petersburg, 2024*
+*Lab 1 — Simulation of Robotic Systems | MSc Robotics and Artificial Intelligence | ITMO University*
