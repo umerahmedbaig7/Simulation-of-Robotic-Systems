@@ -1,1 +1,73 @@
+<mujoco model="Optimus_Knee_Mechanism_472268">
+    <option timestep="0.001" />
 
+    <statistic center="0.15 0 0.5" extent="0.5" />
+
+    <visual>
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.25 0.25 0.25" />
+        <rgba haze="0.05 0.1 0.15 1" />
+        <global azimuth="85" elevation="-10" />
+    </visual>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0.1 0.2 0.3" width="256"
+            height="256" />
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.5 0.6 0.7"
+            rgb2="0.005 0.005 0.005" markrgb="0.8 0.8 0.8" width="300" height="300" />
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="10 10"
+            reflectance="0.2" />
+    </asset>
+
+    <worldbody>
+        <light pos="0 0 1.5" />
+        <light pos="0 0 3" dir="0 0 -1" directional="true" />
+        <geom name="floor" size="0 0 .125" type="plane" material="groundplane" conaffinity="15"
+            condim="3" />
+        <body pos="0 0 0.5" euler="0 -10.5 0">
+            <joint name="O" axis="0 1 0" range="-75 75" damping="0.1" />
+            <geom name="O" type="cylinder" pos="0 0 0" size="0.007 0.007" rgba="0.5 0.5 0.5 1"
+                euler="90 0 0" contype="0" />
+            <geom name="Length_1" type="cylinder" pos="0 0 0.0295" size="0.003 0.0295"
+                rgba="1 0 0 1" contype="0" />
+            <body pos="0 0 0.059" euler="0 17 0">
+                <joint name="A" axis="0 1 0" range="-35 180" />
+                <geom name="A" type="cylinder" pos="0 0 0" size="0.007 0.007" rgba="0.5 0.5 0.5 1"
+                    euler="90 0 0" contype="0" />
+                <geom name="Length_2" type="cylinder" pos="0.038 0 0.023" size="0.003 0.038"
+                    euler="0 60 0" rgba="0 1 0 1" contype="0" />
+                <site name="s1" pos="0.0767 0 0.04" size="0.0025" />
+            </body>
+        </body>
+
+        <body pos="0.072 0 0.5">
+            <joint name="C" axis="0 1 0" />
+            <geom name="C" type="cylinder" pos="0 0 0" size="0.007 0.007" rgba="0.5 0.5 0.5 1"
+                euler="90 0 0" contype="0" />
+            <geom name="Length_3" type="cylinder" size="0.003" fromto="0 0 0 0 0 0.0885"
+                rgba="0 0 1 1" contype="0" />
+            <site name="s2" pos="0 0 0.085" size="0.0025" />
+            <body pos="0 0 0.0885">
+                <joint name="B" axis="0 1 0" range="-35 180" />
+                <geom name="B" type="cylinder" pos="0 0 0" size="0.0085 0.0085" rgba="0.5 0.5 0.5 1"
+                    euler="90 0 0" contype="0" />
+            </body>
+        </body>
+
+        <body name="Input" pos="0.25 0 0.5" euler="0 -75 0">
+            <geom name="Input" type="box" size="0.01 0.01 0.02" pos="0.025 0 -0.055"
+                rgba="0.1 0.1 0.1 1" />
+            <site name="LA_site" pos="0.025 0 -0.055" size="0.005 0.005" rgba="0.5 0.5 0.5 1" />
+        </body>
+
+    </worldbody>
+
+    <equality>
+        <connect site1="s1" site2="s2" />
+    </equality>
+
+    <actuator>
+        <motor name="Linear_Actuator" slidersite="LA_site" cranksite="s2" cranklength="0.295"
+            ctrlrange="0 0.5" gear="1" />
+    </actuator>
+
+</mujoco>
