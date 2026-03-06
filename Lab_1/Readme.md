@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![NumPy](https://img.shields.io/badge/NumPy-Required-orange)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-Required-green)
-![Field](https://img.shields.io/badge/Field-Robotics%20Simulation-red)
+![Field](https://img.shields.io/badge/Field-Robotics%20&%20AI-red)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 > **Course:** Simulation of Robotic Systems — Faculty of Control Systems and Robotics, ITMO University <br>
@@ -222,7 +222,7 @@ s_{n+1} = s_n + (h/6)·(f1 + 2·f2 + 2·f3 + f4)     (8)
 One-step integration error at $t = 0.1$ s (reference: RK4 with $h = 10^{-5}$ s):
 
 | Step Size $h$ | Forward Euler Error | RK4 Error |
-|:--------------|---------------------|-----------|
+|:-------------:|:-------------------:|:---------:|
 | 0.100 s | 0.027239 | 5.07 × 10⁻⁵ |
 | 0.050 s | 0.015894 | 3.10 × 10⁻⁶ |
 | 0.025 s | 0.008625 | 1.90 × 10⁻⁷ |
@@ -241,10 +241,11 @@ Three scripts perform this analysis by sweeping over a range of step sizes $h$ a
 - `Backward_Euler_with_Eigenvalues.py` — extended parameters ($m=0.9$, $k=11.8$, $b=0.015$), $h \in [0.001, 0.1]$ s
 - `Runge_Kutta_with_Eigenvalues.py` — extended parameters ($m=0.9$, $k=11.8$, $b=0.015$), $h \in [0, 0.01]$ s
 
+
 **Forward Euler stability sweep** (primary variant):
 
-| Step Size $h$ | $|\lambda|_{\max}$ | Status |
-|:--------------|--------------------|--------|
+| Step Size $h$ | $\lambda_{\max}$ | Status |
+|:-------------:|:------------------:|:------:|
 | 0.001 s | < 1.0 | ✅ Stable |
 | 0.006 s | ≈ 1.0 | ⚠️ Critical boundary |
 | 0.010 s | 1.000237 | ❌ Unstable |
@@ -369,7 +370,7 @@ Integrates an ODE system over $[0, t_f]$ using the implicit Euler update rule (E
 
 #### `runge_kutta(xk, h)` — `K4_Euler.py`, `Comparison.py`, `Result.py`
 
-Performs a **single RK4 step** from state `xk` using all four slope estimates $f_1$–$f_4$ (Eq. 8).
+Performs a **single RK4 step** from state `xk` using all four slope estimates $f_1$ – $f_4$ (Eq. 8).
 
 | Argument | Type | Description |
 |----------|------|-------------|
@@ -535,8 +536,8 @@ In `Comparison.py` and `Result.py`, the three integrators share one `mass_spring
 
 ### Individual Method Results — $t_f = 10$ s, $h = 0.01$ s
 
-| Method | Max $|x|$ (m) | Final $x$ (m) | Final $\dot{x}$ (m/s) | Behaviour |
-|--------|---------------|---------------|-----------------------|-----------|
+| Method | Max $x$ (m) | Final $x$ (m) | Final $\dot{x}$ (m/s) | Behaviour |
+|--------|:------------:|:-------------:|:--------------------:|:-----------:|
 | Forward Euler | 0.5761 | −0.0969 | −1.9046 | Slowly diverging — amplitude grows over time |
 | Backward Euler | 0.4600 | −0.0283 | −0.6367 | Stable — decays faster than physical rate |
 | RK4 | 0.4600 | −0.0565 | −1.0986 | Stable — accurate physical damping reproduction |
@@ -544,7 +545,7 @@ In `Comparison.py` and `Result.py`, the three integrators share one `mass_spring
 ### Comparative Metrics — $t_f = 30$ s, $h = 0.01$ s
 
 | Method | Max Amplitude (m) | Final State Error vs. Backward Euler |
-|--------|-------------------|--------------------------------------|
+|--------|:-----------------:|:------------------------------------:|
 | Backward Euler | 0.4600 | — (reference baseline) |
 | Forward Euler | 0.9239 | 2.6219 |
 | RK4 | 0.4600 | 0.4183 |
@@ -557,8 +558,8 @@ In `Comparison.py` and `Result.py`, the three integrators share one `mass_spring
 
 ### Stability Analysis Summary
 
-| Method | Stability Type | Instability Onset | $|\lambda|_{\max}$ at $h=0.01$ s |
-|--------|----------------|-------------------|----------------------------------|
+| Method | Stability Type | Instability Onset | $\lambda_{\max}$ at $h=0.01$ s |
+|--------|----------------|-------------------|--------------------------------|
 | Forward Euler | Conditionally stable | $h \approx 0.006$ s | 1.000237 ❌ |
 | Backward Euler (iterative) | A-stable — unconditional | Never | < 1.0 ✅ |
 | RK4 | Conditionally stable | $h \gg 0.01$ s | ≈ 1.0 ✅ |
@@ -573,7 +574,7 @@ The correctness of each integrator was verified through three independent checks
 The global error of Forward Euler scales as $O(h)$ and RK4 as $O(h^4)$, confirmed by computing the one-step error at $t = 0.1$ s against a high-precision reference (RK4 at $h = 10^{-5}$ s). Halving $h$ halves the Forward Euler error and reduces the RK4 error by a factor of ~16, in exact agreement with theory.
 
 **Check 2 — Eigenvalue stability boundary:**
-The norm $|\lambda|_{\max}(A_d(h))$ was swept numerically over $h \in [0, 0.1]$ s. The unit-circle crossing was located at $h \approx 0.006$ s for Forward Euler, consistent with the approximate analytical bound $h_{\text{crit}} \approx 2/\omega_n \approx 0.006$ s.
+The norm $\lambda_{\max}(A_d(h))$ was swept numerically over $h$ ∈ [0, 0.1] s. The unit-circle crossing was located at $h \approx 0.006$ s for Forward Euler, consistent with the approximate analytical bound $h_{\text{crit}} \approx 2/\omega_n \approx 0.006$ s.
 
 **Check 3 — Backward Euler fixed-point convergence:**
 The iterative solver was traced step-by-step for the first time step from $\mathbf{s}_0 = [0.46,\; 0]^T$, confirming convergence to tolerance $10^{-8}$ in 6 iterations with a geometrically shrinking error sequence:
