@@ -457,9 +457,9 @@ Sweeps over an array of step sizes and returns $\max_i |\lambda_i(A_d(h))|$ for 
            final_error_forward     = ‖x_forward[:, −1] − x_backward[:, −1]‖
            final_error_rk4         = ‖x_rk4[:, −1]     − x_backward[:, −1]‖
 ```
-### Example Output
+### Methods Comparison
 
-![Comparison](figures/method_comparison.png)
+![Comparison](Lab_1/figures/method_comparison.png)
 
 ---
 
