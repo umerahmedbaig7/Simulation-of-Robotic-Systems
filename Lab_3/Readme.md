@@ -253,7 +253,7 @@ The XML model from Lab 2 is extended by appending an `<actuator>` block after th
 
 ### Actuated MuJoCo Model
 
-![MuJoCo Model](results/Actuated_MuJoCo_Model.png)
+![MuJoCo Model](results/Actuated_MuJoCo_Model.jpg)
 
 
 ### XML Key Commands Reference
