@@ -216,6 +216,10 @@ After the baseline model is established with all sites in place, the `<tendon>` 
 
 Both tendons share the intermediate waypoint `c1` and use opposite side-sites on each pulley (`s3`/`s4` on Pulley1, `s5`/`s6` on Pulley2), creating the crossing geometry. The `rgba` attributes assign distinct colours (red and green) for visual distinction in the viewer.
 
+### MuJoCo Model with Tendons
+
+![MuJoCo Model](results/Passive_RR_MuJoCo_Model.jpg)
+
 ### XML Key Commands Reference
 
 | XML Element / Attribute | Purpose |
@@ -510,17 +514,17 @@ To change joint spring-damper settings, edit the `<default>` block:
 
 | Plot | Joint | Approximate Amplitude Range | Initial Amplitude (rad) |
 |------|-------|----------------------------|------------------------|
-| Figure 7 (J1 alone) | Joint `one` | 0.00 – 1.75 rad | ~0.0 (rises rapidly) |
-| Figure 8 (J2 alone) | Joint `two` | −0.50 – 1.75 rad | ~0.0 (drops then rises) |
-| Figure 11 (J1 + J2) | Both overlaid | −0.50 – 1.75 rad | Blue (J1) / Red (J2) |
+| Joint One Position (J1) | Joint `one` | 0.00 – 1.75 rad | ~0.0 (rises rapidly) |
+| Joint Two Position (J2) | Joint `two` | −0.50 – 1.75 rad | ~0.0 (drops then rises) |
+| Joint Positions J1 + J2 | Both overlaid | −0.50 – 1.75 rad | Blue (J1) / Red (J2) |
 
 ### Joint Position Plots — $t_f = 15$ s
 
 | Plot | Joint | Converged Amplitude Range (rad) | Behaviour |
 |------|-------|--------------------------------|-----------|
-| Figure 9 (J1 alone) | Joint `one` | ~1.10 – 1.40 rad | Decaying oscillation → steady periodic |
-| Figure 10 (J2 alone) | Joint `two` | ~0.40 – 0.60 rad | Decaying oscillation → steady periodic |
-| Figure 12 (J1 + J2) | Both overlaid | J1: 1.10–1.40, J2: 0.40–0.60 | J1 higher amplitude than J2 |
+| Joint One Position (J1) | Joint `one` | ~1.10 – 1.40 rad | Decaying oscillation → steady periodic |
+| Joint Two Position (J2) | Joint `two` | ~0.40 – 0.60 rad | Decaying oscillation → steady periodic |
+| Joint Positions J1 + J2 | Both overlaid | J1: 1.10–1.40, J2: 0.40–0.60 | J1 higher amplitude than J2 |
 
 ### Qualitative Observations
 
