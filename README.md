@@ -190,7 +190,7 @@ The lab answers the foundational question of numerical simulation: *"Given a dyn
 | 🟠 Backward Euler | $s_{n+1} = s_n + h \cdot f(s_{n+1})$ — implicit, 1st order, unconditionally A-stable |
 | 🟣 RK4 | Four-slope weighted average — 4th order, preferred for physical accuracy |
 | 📊 Eigenvalue Stability | $\lambda_\text{max}(A_d(h)) \leq 1$ required for numerical stability; swept vs $h$ |
-| ⚠️ Stability Boundary | Forward Euler: $h_\text{crit} \approx 0.006$ s; $|\lambda| = 1.000237$ at $h = 0.01$ s |
+| ⚠️ Stability Boundary | Forward Euler: $h_\text{crit} \approx 0.006$ s; $\lambda = 1.000237$ at $h = 0.01$ s |
 
 #### 📤 Key Numerical Results
 
