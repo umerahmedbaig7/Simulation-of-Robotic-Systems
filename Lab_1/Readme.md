@@ -459,7 +459,10 @@ Sweeps over an array of step sizes and returns $\max_i |\lambda_i(A_d(h))|$ for 
 ```
 ### Methods Comparison
 
-![Comparison](Lab_1/figures/method_comparison.png)
+![Comparison](figures/method_comparison.png)
+
+
+
 
 ---
 
